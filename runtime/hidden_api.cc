@@ -227,7 +227,10 @@ static Domain DetermineDomainFromDexLocation(const std::string& dex_location,
   }
 
   if (dex_location == "/system/app/GmsCompatLib/GmsCompatLib.apk" ||
-          (dex_location.starts_with("/data/app/~~") && dex_location.find("==/app.grapheneos.gmscompat.lib-") != std::string::npos)) {
+          dex_location == "/system/app/CarHome/CarHome.apk" ||
+          (dex_location.starts_with("/data/app/~~") &&
+           (dex_location.find("==/app.grapheneos.gmscompat.lib-") != std::string::npos ||
+            dex_location.find("==/com.google.android.compat.lib-") != std::string::npos))) {
       return Domain::kPlatform;
   }
 
